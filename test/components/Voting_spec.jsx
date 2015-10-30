@@ -41,19 +41,19 @@ describe('Voting', () => {
 		const buttons = scryRenderedDOMComponentsWithTag(component, 'button');
 
 		expect(buttons.length).to.equal(2);
-		expect(button[0].hasAttribute('disabled')).to.equal(true);
-		expect(button[1].hasAttribute('disabled')).to.equal(true);
+		expect(buttons[0].hasAttribute('disabled')).to.equal(true);
+		expect(buttons[1].hasAttribute('disabled')).to.equal(true);
 	});
 
 	it('adds label to the voted entry', () =>{
-		const component 0 renderIntoDocument(
+		const component = renderIntoDocument(
 			<Voting pair={['Trainspotting', '28 Days Later']}
 				hasVoted="Trainspotting" />
 				);
 		const buttons = scryRenderedDOMComponentsWithTag(component, 'button');
 
-		expect(buttons[0].textContent).to.contain('Voted')
-	})
+		expect(buttons[0].textContent).to.contain('Voted');
+	});
 
 	it('renders just the winner when there is one', () => {
 		const component = renderIntoDocument(
@@ -64,7 +64,7 @@ describe('Voting', () => {
 
 			const winner = React.findDOMNode(component.refs.winner);
 			expect(winner).to.be.ok;
-			experct(winner.textContent).to.contain('Trainspotting');
+			expect(winner.textContent).to.contain('Trainspotting');
 	});
 
 	it('renders as a pure component', () => {
@@ -80,12 +80,12 @@ describe('Voting', () => {
 		const component = renderIntoDocument(
 			<Voting pair={pair} />
 			);
-		ler firstButton = scryRenderedDOMComponentsWithTag(component, 'button')[0];
+		let firstButton = scryRenderedDOMComponentsWithTag(component, 'button')[0];
 		expect(firstButton.textContent).to.equal('Trainspotting');
 
 		const newPair = pair.set(0, 'Sunshine');
 		component.setProps({pair: newPair});
 		firstButton = scryRenderedDOMComponentsWithTag(component, 'button')[0];
-		expect(firstButton.textContent).to.equal('Sunshine';)
+		expect(firstButton.textContent).to.equal('Sunshine');
 	});
 });
