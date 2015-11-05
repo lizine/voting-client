@@ -1,4 +1,4 @@
-import {Map} from 'immutable';
+import {List, Map} from 'immutable';
 
 
 function setState(state, newState){
