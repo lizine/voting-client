@@ -12,3 +12,9 @@ export function vote(entry){
 		entry
 	};
 }
+export function next(){
+	return {
+		meta: {remotre:true},
+		type: 'NEXT'
+	};
+}
